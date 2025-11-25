@@ -26,31 +26,31 @@ export interface AllUser {
   updateUser(id: string, updatedUser: User): User | undefined;
 }
 
-export class UserRepository implements AllUser{
+export class UserRepository implements AllUser {
   getAllUsers(): User[] {
     return users;
   }
   getUserByID(id: string): User | undefined {
-    return users.find(user=>user.id === id);
+    return users.find((user) => user.id === id);
   }
-  createUser(user: User): User{
+  createUser(user: User): User {
     users.push(user);
     return user;
   }
   deleteUser(id: string): User | undefined {
-    const userIndex = users.findIndex(user => user.id === id);
+    const userIndex = users.findIndex((user) => user.id === id);
     if (userIndex === -1) return undefined;
-    
+
     const deletedUser = users[userIndex];
-    users.splice(userIndex,1);
+    users.splice(userIndex, 1);
 
     return deletedUser;
   }
   updateUser(id: string, updatedUser: User): User | undefined {
-    const userIndex = users.findIndex(user => user.id === id);
+    const userIndex = users.findIndex((user) => user.id === id);
     if (userIndex === -1) return undefined;
 
-    users[userIndex] = {...users[userIndex], ...updatedUser}
+    users[userIndex] = { ...users[userIndex], ...updatedUser };
     return users[userIndex];
   }
 }

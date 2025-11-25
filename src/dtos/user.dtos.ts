@@ -9,3 +9,7 @@ export const CreateUserDTO = UserSchema.pick({
   age: true,
 });
 export type CreateUserDTO = z.infer<typeof CreateUserDTO>;
+
+
+export const UpdateUserDTO = UserSchema.omit({ id: true});
+export type UpdateUserDTO = z.infer<typeof UpdateUserDTO>;
